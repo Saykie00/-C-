@@ -4,6 +4,7 @@
 #include <start.h>
 #include <datalist.h>
 #include <packageinput.h>
+#include <datadelete.h>
 
 
 int main(){
