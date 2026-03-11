@@ -1,5 +1,8 @@
 #include <func.h>
 #include <iostream>
+#include <ui.h>
+
+
 
 int datalist(std::vector<Package> &list) { /*显示货物列表*/
   for (int i = 0; i < list.size(); i++) {
@@ -12,4 +15,9 @@ int datalist(std::vector<Package> &list) { /*显示货物列表*/
     std::cout << "货物舱位等级：" << list[i].booking << std::endl;
     std::cout << "----------------------------------------" << std::endl;
   }
+  std::cout << "是否要回到主菜单？(y/n)" << std::endl;
+  char i;
+  std::cin >> i;
+  if (i == 'y' || i == 'Y')
+    ui_init();
 }

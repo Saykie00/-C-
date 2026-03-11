@@ -1,13 +1,7 @@
-#include "func.h"
-#include <datasearch.h>
-#include <datarw.h>
-#include <start.h>
-#include <datalist.h>
-#include <packageinput.h>
-#include <datadelete.h>
-#include <datarewriting.h>
+#include <ui.h>
 
 
 int main(){
-    std::printf("这里是春季把鸾携航空航天货舱管理系统");
+    ui_init();
+    return 0;
 }
