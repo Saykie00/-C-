@@ -6,15 +6,19 @@
 #include <datalist.h>
 #include <datasearch.h>
 #include <datarewriting.h>
+#include <datadelete.h>
 
 
 
 
 void ui_init() {
-    draw_menu();
-    int choice;
-    while (choice) {
+    while (true) {
+        draw_menu();
+        int choice;
         std::cin >> choice;
+        if (!(choice >= 1 && choice <= 6)) {
+            continue;
+        }
         switch (choice) {
             case 1:
                 packageinput();
@@ -29,11 +33,10 @@ void ui_init() {
                 data_rewriting();
                 break;
             case 5:
+                datadelete();
                 break;
-            default:
-                dataread();
-                ui_init();
-                break;
+            case 6:
+                return;
         }
     }
 }

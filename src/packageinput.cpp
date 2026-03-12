@@ -3,8 +3,8 @@
 #include <ui.h>
 
 void packageinput() { /*这是一个函数用来将货物输入货物类型中*/
-  char i;
-  while (true) {
+  char stop;
+  while (stop != 'n' && stop != 'N') {
     Package tmp;
     while (true) {
       std::cout << "请输入货物编号: ";
@@ -45,12 +45,8 @@ void packageinput() { /*这是一个函数用来将货物输入货物类型中*/
               << std::endl;
     std::cin >> tmp.booking;
     list.push_back(tmp);
-    std::cout
-        << "货物信息已经填写完成，要继续输入吗？(输入'y'以继续输入，'n'以退出)"
-        << std::endl;
-    std::cin >> i;
-    if (i == 'n' || i == 'N')
-        ui_init();
-        break;
+    std::cout<< "货物信息已经填写完成，要继续输入吗？(输入任意键以继续输入，'n'以退出)" << std::endl;
+    std::cin >> stop;
   }
+  return;
 }

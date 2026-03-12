@@ -12,8 +12,9 @@ void draw_menu() {
     std::cout << "[2] 列出所有的货物。" <<std::endl;
     std::cout << "[3] 从所有的货物中搜索" <<std::endl;
     std::cout << "[4] 改写货物数据" <<std::endl;
-    std::cout << "[5] 退出系统" <<std::endl;
+    std::cout << "[5] 删除货物数据" <<std::endl;
+    std::cout << "[6]] 退出系统" <<std::endl;
     std::cout << "_______________________________________" <<std::endl;
-    std::cout << "输入其他除此之外的其他数字无效" <<std::endl;
+    std::cout << "输入其他除此之外的其他键无效" <<std::endl;
     std::cout << "请输入你的选择：" <<std::endl;
 }

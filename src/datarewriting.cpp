@@ -4,33 +4,48 @@
 
 
 void data_rewriting(int number) {
-    std::cout << "请输入需要改写的货物标号"<<std::endl;
-    std::cin >> number;
-    int it;
-    for (int i = 0; i < list.size() ; i++) {
-        if (list[i].number == number) {
-            it = i;
-            std::cout << "已找到货物"<<std::endl;
-            std::cout << "[1]货物名称：" << list[i].Name << std::endl;
-            std::cout << "[2]货物类型：" << list[i].type << std::endl;
-            std::cout << "[3]货物重量：" << list[i].weight << std::endl;
-            std::cout << "[4]货物大小：" << list[i].size << std::endl;
-            std::cout << "[5]货物所在区域：" << list[i].area << std::endl;
-            std::cout << "[6]货物被分配到的航班号：" << list[i].flight << std::endl;
-            std::cout << "[7]货物航班起飞时间：" << list[i].departuretime << std::endl;
-            std::cout << "[8]货物目的地：" << list[i].destnation << std::endl;
-            std::cout << "[9]货物等级：" << list[i].booking << std::endl;
-            std::cout << "货物序号为：" << i <<std::endl;
-            std::cout << "-----------------------------------" << std::endl;
-            std::cout << "注意！改写数据时应该输入序号而不是编号" << std::endl;
-            std::cout << "请输入需要修改的货物信息" << std::endl;
+    bool found = false;
+    int it = 0;
+    while(!found){
+        if (number == 0){
+            std::cout << "请输入需要改写的货物编号"<<std::endl;
+            std::cin >> number;
         }
-        std::cout << "未找到货物，请检查货物编号是否存在" << std::endl;
+        for (int i = 0; i < list.size() ; i++) {
+            if (list[i].number == number) {
+                it = i;
+                found = true;
+                std::cout << "已找到货物"<<std::endl;
+                std::cout << "[1]货物名称：" << list[i].Name << std::endl;
+                std::cout << "[2]货物类型：" << list[i].type << std::endl;
+                std::cout << "[3]货物重量：" << list[i].weight << std::endl;
+                std::cout << "[4]货物大小：" << list[i].size << std::endl;
+                std::cout << "[5]货物所在区域：" << list[i].area << std::endl;
+                std::cout << "[6]货物被分配到的航班号：" << list[i].flight << std::endl;
+                std::cout << "[7]货物航班起飞时间：" << list[i].departuretime << std::endl;
+                std::cout << "[8]货物目的地：" << list[i].destnation << std::endl;
+                std::cout << "[9]货物等级：" << list[i].booking << std::endl;
+                std::cout << "货物序号为：" << i <<std::endl;
+                std::cout << "-----------------------------------" << std::endl;
+                std::cout << "##注意！改写数据时应该输入序号而不是编号##" << std::endl;
+                std::cout << "请输入需要修改的货物信息" << std::endl;
+                break;
+            }
+        }
+        if (!found){
+        std::cout << "未找到货物，请检查货物编号是否存在(((ﾟДﾟ;)))" << std::endl;             //如果遍历整个数据结构后没有找到，直接返回
+        }
     }
     int option;
-    char stop;
-    std::cin >> option;
+    char stop = 'y';
     while (stop == 'y' || stop == 'Y') {
+        std::cout << "[1]名称 [2]类型 [3]重量 [4]大小 [5]区域 [6]航班 [7]时间 [8]目的地 [9]货物等级" << std::endl;
+        if (!(std::cin >> option)) {
+            std::cout << "输入错误，请重新输入(((ﾟДﾟ;)))" << std::endl;
+            std::cin.clear();
+            std::cin.ignore(100, '\n');
+            continue;
+        }
         switch (option) {
         case 1:
             std::cout << "请输入货物名称" << std::endl;
@@ -39,6 +54,14 @@ void data_rewriting(int number) {
                 std::cout << "输入为空，改写失败" << std::endl;
                 std::cout << "请重新输入" << std::endl;
                 continue;
+            }
+            for (int i = 0; i < list.size(); i++) {
+                if (list[i].Name == list[it].Name) {
+                    std::cout << "货物已存在，改写失败" << std::endl;
+                    std::cout << "请重新输入" << std::endl;
+                    list[it].Name.clear();
+                    continue;
+                }
             }
             break;
         case 2:
@@ -116,9 +139,11 @@ void data_rewriting(int number) {
         default:
             std::cout << "无效选项" << std::endl;
             break;
+        }
+        std::cout << "是否继续该信息的改写？(Y/N)" << std::endl;
+        std::cin >> stop;
+        if (stop == 'n' || stop == 'N') {
+            return;
+        }
     }
-    std::cout << "是否继续改写？(y/n)" << std::endl;
-    std::cin >> stop;
-    }
-
 }
