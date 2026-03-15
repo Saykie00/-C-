@@ -11,7 +11,7 @@ void data_rewriting(int number) {
             std::cout << "请输入需要改写的货物编号"<<std::endl;
             std::cin >> number;
         }
-        for (int i = 0; i < list.size() ; i++) {
+        for (int i = 0; i < (int)list.size() ; i++) {
             if (list[i].number == number) {
                 it = i;
                 found = true;
@@ -33,7 +33,8 @@ void data_rewriting(int number) {
             }
         }
         if (!found){
-        std::cout << "未找到货物，请检查货物编号是否存在(((ﾟДﾟ;)))" << std::endl;             //如果遍历整个数据结构后没有找到，直接返回
+            std::cout << "未找到货物，请检查货物编号是否存在(((ﾟДﾟ;)))" << std::endl;             //如果遍历整个数据结构后没有找到，直接返回
+            return;
         }
     }
     int option;
@@ -55,7 +56,7 @@ void data_rewriting(int number) {
                 std::cout << "请重新输入" << std::endl;
                 continue;
             }
-            for (int i = 0; i < list.size(); i++) {
+            for (int i = 0; i < (int)list.size(); i++) {
                 if (list[i].Name == list[it].Name) {
                     std::cout << "货物已存在，改写失败" << std::endl;
                     std::cout << "请重新输入" << std::endl;

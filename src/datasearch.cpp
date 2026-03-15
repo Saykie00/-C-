@@ -12,7 +12,7 @@ void datasearch_bynumber() {
         std::cout << "请输入要搜索的货物编号" << std::endl;
         int number;
         std::cin >> number;
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < (int)list.size(); i++) {
             if (list[i].number == number) {
                 std::cout << "货物编号：" << list[i].number << std::endl;
                 std::cout << "货物重量：" << list[i].weight << std::endl;
@@ -45,7 +45,7 @@ void datasearch_byname() {
         std::string name;
         std::cin >> name;
         int n = 0;
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < (int)list.size(); i++) {
             if (list[i].Name == name) {
                 std::cout << "货物序号: " << i << std::endl;
                 std::cout << "货物编号：" << list[i].number << std::endl;
@@ -82,7 +82,7 @@ void datasearch_bydestnation() {
         std::cout << "请输入要搜索的货物目的地" << std::endl;
         std::string destnation;
         std::cin >> destnation;
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < (int)list.size(); i++) {
             if (list[i].destnation == destnation) {
                 std::cout << "货物编号：" << list[i].number << std::endl;
                 std::cout << "货物重量：" << list[i].weight << std::endl;

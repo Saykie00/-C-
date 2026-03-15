@@ -3,31 +3,30 @@
 #include <ui.h>
 
 void packageinput() { /*这是一个函数用来将货物输入货物类型中*/
-  char stop;
+  char stop = 'y';
   while (stop != 'n' && stop != 'N') {
     Package tmp;
     while (true) {
-      std::cout << "请输入货物编号: ";
-      int Number;
-      std::cin >> Number;
-      bool isDuplicate = false;
-      for (int i = 0; i < list.size(); i++) {
+        std::cout << "注：所有的数据都不要加空格，否则其导致的数据紊乱请自行负责 " << std::endl;
+        std::cout << "请输入货物编号: ";
+        int Number;
+        std::cin >> Number;
+        bool isDuplicate = false;
+        for (int i = 0; i < (int)list.size(); i++) {
         if (list[i].number == Number) {
           std::cout << "编号重复，请重新输入！" << std::endl;
           isDuplicate = true;
           break;
         }
-      }
-      if (!isDuplicate) {
+        }
+        if (!isDuplicate) {
         tmp.number = Number;
         break;
-      }
+        }
     }
     std::cout << "请输入货物重量，单位为千克" << std::endl;
     std::cin >> tmp.weight;
-    std::cout << "请输入货物大小，格式为长，宽，高，数据之间用“X”(大写)"
-                 "隔开，单位为厘米，例如17(长)X17(宽)X17(高)"
-              << std::endl;
+    std::cout << "请输入货物大小，格式为长，宽，高，数据之间用“X”(大写)隔开，单位为厘米，例如17(长)X17(宽)X17(高)"<< std::endl;
     std::cin >> tmp.size;
     std::cout << "请输入货物类型" << std::endl;
     std::cin >> tmp.type;
