@@ -3,14 +3,13 @@
 #include <iostream>
 
 
-void data_rewriting(int number) {
+void data_rewriting() {
+    int number;
+    std::cout << "请输入需要改写的货物编号"<<std::endl;
+    std::cin >> number;
     bool found = false;
     int it = 0;
     while(!found){
-        if (number == 0){
-            std::cout << "请输入需要改写的货物编号"<<std::endl;
-            std::cin >> number;
-        }
         for (int i = 0; i < (int)list.size() ; i++) {
             if (list[i].number == number) {
                 it = i;

@@ -16,4 +16,4 @@ struct Package { // 这是货物的数据类型
   char booking;              // E(经济舱) N（普通舱） V（优先舱）
 };
 
-std::vector<Package> list;
+extern std::vector<Package> list;

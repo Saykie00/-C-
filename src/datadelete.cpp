@@ -14,7 +14,7 @@ void data_delete_bynumber() {
         bool found = false;
         std::cout << "请输入要删除的货物编号" << std::endl;
         std::cin >> number;
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < (int)list.size(); i++) {
             if (list[i].number == number) {
                 list.erase(list.begin() + i);
                 found = true;
@@ -46,7 +46,7 @@ void data_delete_byname() {
         int n = 0;
         std::cout << "请输入要删除的货物名称" << name << std::endl;
         std::cin >> name;
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < (int)list.size(); i++) {
             if (list[i].Name == name) {
                 n++;
                 std::cout << "##已找到，标号为：[" << i << "]的货物##" << std::endl;
@@ -117,7 +117,7 @@ void data_delete_by_area() {
         char a = 'N';
         std::cin >> a;
         if (a == 'y' || a == 'Y') {
-            for (int i = 0; i < list.size(); i++) {
+            for (int i = 0; i < (int)list.size(); i++) {
                 if (list[i].area == area) {
                     list.erase(list.begin() + i);
                     i--;
