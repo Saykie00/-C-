@@ -1,6 +1,6 @@
 #include <func.h>
 #include <iostream>
-#include <ui.h>
+#include <ui/ui.h>
 
 void packageinput() { /*这是一个函数用来将货物输入货物类型中*/
   char stop = 'y';

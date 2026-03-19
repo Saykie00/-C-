@@ -1,6 +1,6 @@
-#include "ui.h"
+#include "ui/ui.h"
 #include <datarw.h>
-#include <draw_menu.h>
+#include <ui/draw_menu.h>
 #include <iostream>
 #include <packageinput.h>
 #include <datalist.h>
@@ -15,7 +15,11 @@ void ui_init() {
     while (true) {
         draw_menu();
         int choice;
-        std::cin >> choice;
+        if (!(std::cin >> choice)) {
+            std::cin.clear();
+            std::cin.ignore(100, '\n');
+            continue;
+        }
         if (!(choice >= 1 && choice <= 6)) {
             continue;
         }
