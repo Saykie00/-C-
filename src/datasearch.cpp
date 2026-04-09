@@ -13,8 +13,13 @@ void datasearch_bynumber() {
     if (!(std::cin >> number)) { // 输入无效，清空缓冲区并重新输入
       std::cin.clear();
       std::cin.ignore(100, '\n');
-      std::cout << "输入无效，请重新输入" << std::endl;
-      continue;
+      std::cout << "输入无效，请重新输入，是否要退出？" << std::endl;
+      char dda = 'a';
+      std::cin >> dda;
+      if (dda == 'Y' || dda == 'y')
+        return;
+      else
+        continue;
     }
     for (int i = 0; i < (int)list.size(); i++) {
       if (list[i].number == number) {
@@ -28,6 +33,9 @@ void datasearch_bynumber() {
         std::cout << "货物航班起飞时间：" << list[i].departuretime << std::endl;
         std::cout << "货物目的地：" << list[i].destnation << std::endl;
         std::cout << "货物舱位：" << list[i].booking << std::endl;
+        std::cout << "货物运费：" << list[i].price << std::endl;
+        std::cout << "货物托运人姓名：" << list[i].cname << std::endl;
+        std::cout << "货物托运人联系方式：" << list[i].cid << std::endl;
         found = true;
         break;
       } // 找到货物后跳出循环
@@ -62,6 +70,9 @@ void datasearch_byname() {
         std::cout << "货物航班起飞时间：" << list[i].departuretime << std::endl;
         std::cout << "货物目的地：" << list[i].destnation << std::endl;
         std::cout << "货物舱位：" << list[i].booking << std::endl;
+        std::cout << "货物运费：" << list[i].price << std::endl;
+        std::cout << "货物托运人姓名：" << list[i].cname << std::endl;
+        std::cout << "货物托运人联系方式：" << list[i].cid << std::endl;
         found = true;
         n++;
       }
@@ -98,6 +109,9 @@ void datasearch_bydestnation() {
         std::cout << "货物航班起飞时间：" << list[i].departuretime << std::endl;
         std::cout << "货物目的地：" << list[i].destnation << std::endl;
         std::cout << "货物舱位：" << list[i].booking << std::endl;
+        std::cout << "货物运费：" << list[i].price << std::endl;
+        std::cout << "货物托运人姓名：" << list[i].cname << std::endl;
+        std::cout << "货物托运人联系方式：" << list[i].cid << std::endl;
         found = true;
         n++;
       } // 找到货物，输出信息并标记为已找到
@@ -119,9 +133,8 @@ void datasearch() { /*这是一个函数用来搜索货物的 */
     std::cout << "1.按编号搜索" << std::endl;
     std::cout << "2.按名字搜索" << std::endl;
     std::cout << "3.按目的地搜索" << std::endl;
-    std::cout << "4.返回" << std::endl;
-    std::cout << "按任意键（上面的数字除外）以退出" << std::endl;
-    std::cout << "请输入搜索方式前的序号以开始搜索" << std::endl;
+    std::cout << "4.返回主菜单" << std::endl;
+    std::cout << "输入序号以开始" << std::endl;
     int choice;
     if (!(std::cin >> choice)) {
       std::cout << "输入错误，请重新输入(((ﾟДﾟ;)))" << std::endl;

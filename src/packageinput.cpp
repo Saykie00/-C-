@@ -91,6 +91,22 @@ void packageinput() { /*这是一个函数用来将货物输入货物类型中*/
     std::cout << "请输入货物舱位等级（E:经济舱，N:普通舱，V:优先舱）"
               << std::endl;
     std::cin >> tmp.booking;
+    if (tmp.booking == 'v' || tmp.booking == 'V') {
+      tmp.price = tmp.weight * 12.5;
+    } else if (tmp.booking == 'n' || tmp.booking == 'N') {
+      tmp.price = tmp.weight * 8;
+    } else if (tmp.booking == 'e' || tmp.booking == 'E') {
+      tmp.price = tmp.weight * 6;
+    }
+    std::cout << "请输入货物托运人姓名" << std::endl;
+    std::cin >> tmp.cname;
+    std::cout << "继续输入？(y/n)" << std::endl;
+    std::cin >> stop;
+    if (stop == 'n') {
+      return;
+    }
+    std::cout << "请输入货物托运人联系方式" << std::endl;
+    std::cin >> tmp.cid;
     list.push_back(tmp);
     std::cout << "货物信息已经填写完成，要继续输入吗？(输入任意键以继续输入，'"
                  "n'以退出)"

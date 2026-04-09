@@ -6,11 +6,17 @@ void data_rewriting() {
   int number;
   bool found = false;
   int it;
+  std::cout << "要开始改写吗？(y/N)" << std::endl;
+  char op;
+  std::cin >> op;
+  if (op != 'y' && op != 'Y') {
+    return;
+  }
   while (!found) {
     std::cout << "请输入需要改写的货物编号" << std::endl;
     if (!(std::cin >> number)) { // 用户输入货物编号
-        std::cin.clear();
-        std::cin.ignore(100000000000, '\n');
+      std::cin.clear();
+      std::cin.ignore(100000000000, '\n');
       continue;
     }
     for (int i = 0; i < (int)list.size(); i++) {
@@ -28,6 +34,9 @@ void data_rewriting() {
                   << std::endl;
         std::cout << "[8]货物目的地：" << list[i].destnation << std::endl;
         std::cout << "[9]货物等级：" << list[i].booking << std::endl;
+        std::cout << "[10]运费" << list[i].price << std::endl;
+        std::cout << "[11]货物托运人姓名：" << list[i].cname << std::endl;
+        std::cout << "[12]货物托运人联系方式：" << list[i].cid << std::endl;
         std::cout << "-----------------------------------" << std::endl;
         std::cout << "请输入需要修改的货物信息" << std::endl;
         break;
@@ -49,7 +58,7 @@ void data_rewriting() {
   char stop = 'y';
   while (stop == 'y' || stop == 'Y') {
     std::cout << "[1]名称 [2]类型 [3]重量 [4]大小 [5]区域 [6]航班 [7]时间 "
-                 "[8]目的地 [9]货物等级"
+                 "[8]目的地 [9]货物等级 [10]运费 [11]货物托运人姓名 [12]货物托运人联系方式 [13]不修改退出"
               << std::endl;
     if (!(std::cin >> option)) {
       std::cout << "输入错误，请重新输入(((ﾟДﾟ;)))" << std::endl;
@@ -62,19 +71,6 @@ void data_rewriting() {
       std::cout << "请输入货物名称" << std::endl;
       std::cout << "当前名称：" << list[it].Name << std::endl;
       std::cin >> list[it].Name;
-      if (list[it].Name.empty()) {
-        std::cout << "输入为空，改写失败" << std::endl;
-        std::cout << "请重新输入" << std::endl;
-        continue;
-      }
-      for (int i = 0; i < (int)list.size(); i++) {
-        if (list[i].Name == list[it].Name) {
-          std::cout << "货物名字相同" << std::endl;
-          std::cout << "请重新输入" << std::endl;
-          list[it].Name.clear();
-          continue;
-        }
-      }
       break;
     case 2:
       std::cout << "请输入货物类型" << std::endl;
@@ -157,6 +153,39 @@ void data_rewriting() {
         continue;
       }
       break;
+    case 10:
+      std::cout << "请输入货物运费" << std::endl;
+      std::cout << "当前运费：" << list[it].price << std::endl;
+      if (!(std::cin >> list[it].price)) {
+        std::cout << "请检查数值类型是否正确" << std::endl;
+        std::cout << "重新输入" << std::endl;
+        std::cin.clear();
+        std::cin.ignore(1000000, '\n');
+        continue;
+      }
+      break;
+    case 11:
+      std::cout << "请输入货物托运人姓名" << std::endl;
+      std::cout << "当前托运人姓名：" << list[it].cname << std::endl;
+      std::cin >> list[it].cname;
+      if (list[it].cname.empty()) {
+        std::cout << "输入为空，改写失败" << std::endl;
+        std::cout << "请重新输入" << std::endl;
+        continue;
+      }
+      break;
+    case 12:
+      std::cout << "请输入货物托运人联系方式" << std::endl;
+      std::cout << "当前托运人联系方式：" << list[it].cid << std::endl;
+      std::cin >> list[it].cid;
+      if (list[it].cid.empty()) {
+        std::cout << "输入为空，改写失败" << std::endl;
+        std::cout << "请重新输入" << std::endl;
+        continue;
+      }
+      break;
+    case 13:
+      return;
     default:
       std::cout << "无效选项" << std::endl;
       break;

@@ -14,7 +14,7 @@ void datawrite() { /*这是一个函数用来写保存的数据的 */
     file << list[i].number << " " << list[i].weight << " " << list[i].size
          << " " << list[i].type << " " << list[i].Name << " " << list[i].area
          << " " << list[i].flight << " " << list[i].departuretime << " "
-         << list[i].destnation << " " << list[i].booking << std::endl;
+         << list[i].destnation << " " << list[i].booking <<" "<<list[i].price<<" "<<list[i].cname<<" "<<list[i].cid<<std::endl;
   }
 };
 
@@ -28,7 +28,7 @@ void dataread() { /*这是一个函数用来读取保存的数据的 */
   Package tmp;
   while (file >> tmp.number >> tmp.weight >> tmp.size >> tmp.type >> tmp.Name >>
          tmp.area >> tmp.flight >> tmp.departuretime >> tmp.destnation >>
-         tmp.booking) {
+         tmp.booking >> tmp.price >> tmp.cname >> tmp.cid) {
     list.push_back(tmp);
   }
 }

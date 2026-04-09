@@ -14,6 +14,9 @@ struct Package { // 这是货物的数据类型
   std::string departuretime; // 货物航班起飞时间
   std::string destnation;    // 货物目的地
   char booking;              // E(经济舱) N（普通舱） V（优先舱）
+  double price;
+  std::string cname;  //客户姓名
+  std::string cid;    //客户联系方式
 };
 
 extern std::vector<Package> list;    // 声明存在一个存储货物信息的全局变量

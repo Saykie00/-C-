@@ -25,6 +25,9 @@ void datalist() { /*显示货物列表*/
     std::cout << "货物目标地点：" << list[i].destnation << std::endl;
     std::cout << "货物起飞时间：" << list[i].departuretime << std::endl;
     std::cout << "货物舱位等级：" << list[i].booking << std::endl;
+    std::cout << "货物托运价格：" << list[i].price << std::endl;
+    std::cout << "货物托运人姓名：" << list[i].cname << std::endl;
+    std::cout << "货物托运人联系方式：" << list[i].cid << std::endl;
     std::cout << "----------------------------------------" << std::endl;
     if (i == (int)list.size()) {
       std::cout << "已经到底了⸜(* ॑꒳ ॑* )⸝" << std::endl;
@@ -42,7 +45,7 @@ void datalist() { /*显示货物列表*/
       i = n - 1;
     }
   }
-  std::cout << "是否要回到主菜单？(输入任意键以返回)" << std::endl;
+  std::cout << "是否要回到主菜单？(输入任意值以返回)" << std::endl;
   char i;
   std::cin >> i;
   return;
