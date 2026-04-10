@@ -1,6 +1,6 @@
-#include <func.h>
+#include <cargodata/datalist.h>
+#include "cargodata/func.h"
 #include <iostream>
-#include <ui/ui.h>
 
 void datalist() { /*显示货物列表*/
   int n = 0;
@@ -22,8 +22,6 @@ void datalist() { /*显示货物列表*/
 
     std::cout << "货物所在区域：" << list[i].area << std::endl;
     std::cout << "货物被分配到的航班号：" << list[i].flight << std::endl;
-    std::cout << "货物目标地点：" << list[i].destnation << std::endl;
-    std::cout << "货物起飞时间：" << list[i].departuretime << std::endl;
     std::cout << "货物舱位等级：" << list[i].booking << std::endl;
     std::cout << "货物托运价格：" << list[i].price << std::endl;
     std::cout << "货物托运人姓名：" << list[i].cname << std::endl;

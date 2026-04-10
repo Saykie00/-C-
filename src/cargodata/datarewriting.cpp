@@ -1,5 +1,6 @@
-#include "datarewriting.h"
-#include <func.h>
+#include "cargodata/datarewriting.h"
+#include "cargodata/func.h"
+#include "flight/flight.h"
 #include <iostream>
 
 void data_rewriting() {
@@ -30,9 +31,6 @@ void data_rewriting() {
         std::cout << "[4]货物大小：" << list[i].size << std::endl;
         std::cout << "[5]货物所在区域：" << list[i].area << std::endl;
         std::cout << "[6]货物被分配到的航班号：" << list[i].flight << std::endl;
-        std::cout << "[7]货物航班起飞时间：" << list[i].departuretime
-                  << std::endl;
-        std::cout << "[8]货物目的地：" << list[i].destnation << std::endl;
         std::cout << "[9]货物等级：" << list[i].booking << std::endl;
         std::cout << "[10]运费" << list[i].price << std::endl;
         std::cout << "[11]货物托运人姓名：" << list[i].cname << std::endl;
@@ -58,7 +56,8 @@ void data_rewriting() {
   char stop = 'y';
   while (stop == 'y' || stop == 'Y') {
     std::cout << "[1]名称 [2]类型 [3]重量 [4]大小 [5]区域 [6]航班 [7]时间 "
-                 "[8]目的地 [9]货物等级 [10]运费 [11]货物托运人姓名 [12]货物托运人联系方式 [13]不修改退出"
+                 "[8]目的地 [9]货物等级 [10]运费 [11]货物托运人姓名 "
+                 "[12]货物托运人联系方式 [13]不修改退出"
               << std::endl;
     if (!(std::cin >> option)) {
       std::cout << "输入错误，请重新输入(((ﾟДﾟ;)))" << std::endl;
@@ -106,41 +105,30 @@ void data_rewriting() {
       std::cout << "请输入货物所在区域" << std::endl;
       std::cout << "当前区域：" << list[it].area << std::endl;
       std::cin >> list[it].area;
-      if (list[it].area.empty()) {
-        std::cout << "输入为空，改写失败" << std::endl;
-        std::cout << "请重新输入" << std::endl;
+      if (list[it].area[0] < 'A' || list[it].area[0] > 'Z') {
+        std::cout << "输入格式错误，请重新输入" << std::endl;
+        continue;
+      } else if (list[it].area.length() > 3) {
+        std::cout << "输入格式错误，请重新输入" << std::endl;
         continue;
       }
       break;
     case 6:
       std::cout << "请输入货物被分配到的航班号" << std::endl;
       std::cout << "当前航班号：" << list[it].flight << std::endl;
-      std::cin >> list[it].flight;
-      if (list[it].flight.empty()) {
-        std::cout << "输入为空，改写失败" << std::endl;
+      std::cout << "当前的航班： " << std::endl;
+      for (int i = 0; i < (int)flights.size(); i++) {
+        std::cout << "[" << i << "] " << flights[i].flight << " ";
+      }
+      std::cout << "输入航班序号：";
+      std::cin >> number;
+      if (number < 0 || number >= (int)flights.size()) {
+        std::cout << "输入有效值" << std::endl;
         std::cout << "请重新输入" << std::endl;
         continue;
       }
-      break;
-    case 7:
-      std::cout << "请输入货物航班起飞时间" << std::endl;
-      std::cout << "当前起飞时间：" << list[it].departuretime << std::endl;
-      std::cin >> list[it].departuretime;
-      if (list[it].departuretime.empty()) {
-        std::cout << "输入为空，改写失败" << std::endl;
-        std::cout << "请重新输入" << std::endl;
-        continue;
-      }
-      break;
-    case 8:
-      std::cout << "请输入货物目的地" << std::endl;
-      std::cout << "当前目的地：" << list[it].destnation << std::endl;
-      std::cin >> list[it].destnation;
-      if (list[it].destnation.empty()) {
-        std::cout << "输入为空，改写失败" << std::endl;
-        std::cout << "请重新输入" << std::endl;
-        continue;
-      }
+      list[it].flight = flights[number].flight;
+      list[it].flightPtr = &flights[number];
       break;
     case 9:
       std::cout << "请输入货物等级" << std::endl;

@@ -1,14 +1,14 @@
-#include "ui/ui.h"
-#include <datadelete.h>
-#include <datalist.h>
-#include <datarewriting.h>
-#include <datarw.h>
-#include <datasearch.h>
+#include "ui/ui_cargo.h"
+#include <cargodata/datadelete.h>
+#include <cargodata/datalist.h>
+#include <cargodata/datarewriting.h>
+#include <cargodata/datarw.h>
+#include <cargodata/datasearch.h>
 #include <iostream>
-#include <packageinput.h>
-#include <ui/draw_menu.h>
+#include <cargodata/packageinput.h>
+#include <ui/draw_cargomenu.h>
 
-void ui_init() {
+void ui_cargo() {
   while (true) {
     draw_menu(); // 这个是那个写UI的函数
     int choice;

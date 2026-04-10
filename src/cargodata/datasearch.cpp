@@ -1,5 +1,5 @@
-#include <datasearch.h>
-#include <func.h>
+#include <cargodata/datasearch.h>
+#include <cargodata/func.h>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -29,9 +29,7 @@ void datasearch_bynumber() {
         std::cout << "货物类型：" << list[i].type << std::endl;
         std::cout << "货物名字：" << list[i].Name << std::endl;
         std::cout << "货物所在区域：" << list[i].area << std::endl;
-        std::cout << "货物被分配到的航班号：" << list[i].flight << std::endl;
-        std::cout << "货物航班起飞时间：" << list[i].departuretime << std::endl;
-        std::cout << "货物目的地：" << list[i].destnation << std::endl;
+        //std::cout << "货物被分配到的航班号：" << list[i].flight << std::endl;
         std::cout << "货物舱位：" << list[i].booking << std::endl;
         std::cout << "货物运费：" << list[i].price << std::endl;
         std::cout << "货物托运人姓名：" << list[i].cname << std::endl;
@@ -66,9 +64,7 @@ void datasearch_byname() {
         std::cout << "货物类型：" << list[i].type << std::endl;
         std::cout << "货物名字：" << list[i].Name << std::endl;
         std::cout << "货物所在区域：" << list[i].area << std::endl;
-        std::cout << "货物被分配到的航班号：" << list[i].flight << std::endl;
-        std::cout << "货物航班起飞时间：" << list[i].departuretime << std::endl;
-        std::cout << "货物目的地：" << list[i].destnation << std::endl;
+        //std::cout << "货物被分配到的航班号：" << list[i].flight << std::endl;
         std::cout << "货物舱位：" << list[i].booking << std::endl;
         std::cout << "货物运费：" << list[i].price << std::endl;
         std::cout << "货物托运人姓名：" << list[i].cname << std::endl;
@@ -89,43 +85,43 @@ void datasearch_byname() {
   return;
 }
 
-void datasearch_bydestnation() {
-  char choice = '0';
-  while (choice != 'n' && choice != 'N') {
-    bool found = false;
-    int n = 0;
-    std::cout << "请输入要搜索的货物目的地" << std::endl;
-    std::string destnation;
-    std::cin >> destnation;
-    for (int i = 0; i < (int)list.size(); i++) {
-      if (list[i].destnation == destnation) {
-        std::cout << "货物编号：" << list[i].number << std::endl;
-        std::cout << "货物重量：" << list[i].weight << std::endl;
-        std::cout << "货物大小：" << list[i].size << std::endl;
-        std::cout << "货物类型：" << list[i].type << std::endl;
-        std::cout << "货物名字：" << list[i].Name << std::endl;
-        std::cout << "货物所在区域：" << list[i].area << std::endl;
-        std::cout << "货物被分配到的航班号：" << list[i].flight << std::endl;
-        std::cout << "货物航班起飞时间：" << list[i].departuretime << std::endl;
-        std::cout << "货物目的地：" << list[i].destnation << std::endl;
-        std::cout << "货物舱位：" << list[i].booking << std::endl;
-        std::cout << "货物运费：" << list[i].price << std::endl;
-        std::cout << "货物托运人姓名：" << list[i].cname << std::endl;
-        std::cout << "货物托运人联系方式：" << list[i].cid << std::endl;
-        found = true;
-        n++;
-      } // 找到货物，输出信息并标记为已找到
-    }
-    if (!found) {
-      std::cout << "未找到货物(((ﾟДﾟ;)))" << std::endl;
-    } else {
-      std::cout << "找到" << n << "件货物" << std::endl;
-    }
-    std::cout << "是否继续按照目的地寻找货物？(Y/N)" << std::endl;
-    std::cin >> choice;
-  }
-  return;
-}
+//void datasearch_bydestnation() {
+//  char choice = '0';
+//  while (choice != 'n' && choice != 'N') {
+//    bool found = false;
+//    int n = 0;
+//    std::cout << "请输入要搜索的货物目的地" << std::endl;
+//    std::string destnation;
+//    std::cin >> destnation;
+//    for (int i = 0; i < (int)list.size(); i++) {
+//      if (list[i].destnation == destnation) {
+//        std::cout << "货物编号：" << list[i].number << std::endl;
+//        std::cout << "货物重量：" << list[i].weight << std::endl;
+//        std::cout << "货物大小：" << list[i].size << std::endl;
+//        std::cout << "货物类型：" << list[i].type << std::endl;
+//        std::cout << "货物名字：" << list[i].Name << std::endl;
+//         std::cout << "货物所在区域：" << list[i].area << std::endl;
+//         std::cout << "货物被分配到的航班号：" << list[i].flight << std::endl;
+//         std::cout << "货物航班起飞时间：" << list[i].departuretime << std::endl;
+//         std::cout << "货物目的地：" << list[i].destnation << std::endl;
+//         std::cout << "货物舱位：" << list[i].booking << std::endl;
+//         std::cout << "货物运费：" << list[i].price << std::endl;
+//         std::cout << "货物托运人姓名：" << list[i].cname << std::endl;
+//         std::cout << "货物托运人联系方式：" << list[i].cid << std::endl;
+//         found = true;
+//         n++;
+//       } // 找到货物，输出信息并标记为已找到
+//     }
+//     if (!found) {
+//       std::cout << "未找到货物(((ﾟДﾟ;)))" << std::endl;
+//     } else {
+//       std::cout << "找到" << n << "件货物" << std::endl;
+//     }
+//     std::cout << "是否继续按照目的地寻找货物？(Y/N)" << std::endl;
+//     std::cin >> choice;
+//   }
+//   return;
+// }
 
 void datasearch() { /*这是一个函数用来搜索货物的 */
   while (true) {
@@ -150,7 +146,7 @@ void datasearch() { /*这是一个函数用来搜索货物的 */
       datasearch_byname();
       break;
     case 3:
-      datasearch_bydestnation();
+     // datasearch_bydestnation();
       break;
     case 4:
       return;

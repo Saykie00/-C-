@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "flight/flight.h"
+
+struct Flight;
 
 struct Package { // 这是货物的数据类型
   int number;    // 货物编号
@@ -9,14 +12,13 @@ struct Package { // 这是货物的数据类型
   std::string size;
   std::string type;   // 货物类型
   std::string Name;   // 货物名字
-  std::string area;   // 货物所在区域，格式为A01,A02...B01,B02....
-  std::string flight; // 货物将被分配的航班号
-  std::string departuretime; // 货物航班起飞时间
-  std::string destnation;    // 货物目的地
+  Flight* flightPtr = nullptr;
+  std::string flight; // 航班号
+  std::string area;
   char booking;              // E(经济舱) N（普通舱） V（优先舱）
   double price;
-  std::string cname;  //客户姓名
-  std::string cid;    //客户联系方式
+  std::string cname;
+  std::string cid;
 };
 
 extern std::vector<Package> list;    // 声明存在一个存储货物信息的全局变量

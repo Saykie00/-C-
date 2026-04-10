@@ -1,5 +1,5 @@
-#include "datadelete.h"
-#include "func.h"
+#include "cargodata/datadelete.h"
+#include "cargodata/func.h"
 #include <iostream>
 
 void data_delete_bynumber() {
@@ -52,7 +52,6 @@ void data_delete_byname() {
         std::cout << "编号为:" << list[i].number << std::endl;
         std::cout << "航班号为:" << list[i].flight << std::endl;
         std::cout << "类型为:" << list[i].type << std::endl;
-        std::cout << "目的地为：" << list[i].destnation << std::endl;
         found = true;
       }
     }
@@ -102,7 +101,6 @@ void data_delete_by_area() {
         std::cout << "编号为:" << list[i].number << std::endl;
         std::cout << "航班号为:" << list[i].flight << std::endl;
         std::cout << "类型为:" << list[i].type << std::endl;
-        std::cout << "目的地为：" << list[i].destnation << std::endl;
       }
     }
     if (found) {
