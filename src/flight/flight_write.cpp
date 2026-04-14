@@ -16,10 +16,15 @@ void flightWrite() {
     std::cout << "6. 保存" << std::endl;
     std::cout << "7. 不保存直接退出" << std::endl;
     std::cin >> choice;
-    switch (choice){
+    switch (choice) {
     case 1:
       std::cout << "输入航班号： " << std::endl;
       std::cin >> tmp.flight;
+      if (tmp.flight == "exit") {
+        std::cin.clear();
+        std::cin.ignore(1000000, '\n');
+        break;
+      }
       break;
     case 2:
       std::cout << "输入起飞时间： " << std::endl;
@@ -43,10 +48,10 @@ void flightWrite() {
       }
       break;
     case 6:
-        flights.push_back(tmp);
-        return;
-    case 7:   //不保存直接退出
-        return;
+      flights.push_back(tmp);
+      return;
+    case 7: // 不保存直接退出
+      return;
     default:
       continue;
     }

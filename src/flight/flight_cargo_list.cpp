@@ -37,7 +37,16 @@ void flight_cargo_list() {
             std::cout << "[" << i+1 << "]: " << "货物区域：" << flights[it].packages[i]->area << std::endl;
             std::cout << "[" << i+1 << "]: " << "托运人名称：" << flights[it].packages[i]->cname << std::endl;
             std::cout << "[" << i+1 << "]: " << "托运人联系方式：" << flights[it].packages[i]->cid << std::endl;
+            std::cout << "[" << i+1 << "]: " << "货物价格：" << flights[it].packages[i]->price << std::endl;
+            if (i == (int)flights[it].packages.size() - 1) {
+                double b = 0;
+                for (int j = 0; j < (int)flights[it].packages.size(); ++j) {
+                    b += flights[it].packages[j]->price;
+                }
+                std::cout << "航班货物总运费为:" << b << std::endl;
+            }
             std::cout << "--------------------------" << std::endl;
+
         }
         std::cout << "输入任意值返回" << std::endl;
         int choice;

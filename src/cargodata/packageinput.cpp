@@ -14,16 +14,16 @@ void packageinput() { /*这是一个函数用来将货物输入货物类型中*/
     int opt = 999;
     system("clear");
     std::cout << "请选择要输入的货物信息项：" << std::endl;
-    std::cout << "1. 货物编号" << tmp.number << std::endl;
-    std::cout << "2. 货物重量" << tmp.weight << std::endl;
-    std::cout << "3. 货物大小" << tmp.size << std::endl;
-    std::cout << "4. 货物类型" << tmp.type << std::endl;
-    std::cout << "5. 货物名字" << tmp.Name << std::endl;
-    std::cout << "6. 货物所在区域" << tmp.area << std::endl;
-    std::cout << "7. 货物航班号" << tmp.flight << std::endl;
-    std::cout << "8. 货物舱位等级" << tmp.booking << std::endl;
-    std::cout << "9. 货物托运人姓名" << tmp.cname << std::endl;
-    std::cout << "10. 货物托运人联系方式" << tmp.cid << std::endl;
+    std::cout << "1. 货物编号           " << tmp.number << std::endl;
+    std::cout << "2. 货物重量           " << tmp.weight << std::endl;
+    std::cout << "3. 货物大小           " << tmp.size << std::endl;
+    std::cout << "4. 货物类型           " << tmp.type << std::endl;
+    std::cout << "5. 货物名字           " << tmp.Name << std::endl;
+    std::cout << "6. 货物所在区域        " << tmp.area << std::endl;
+    std::cout << "7. 货物航班号         " << tmp.flight << std::endl;
+    std::cout << "8. 货物舱位等级        " << tmp.booking << std::endl;
+    std::cout << "9. 货物托运人姓名      " << tmp.cname << std::endl;
+    std::cout << "10. 货物托运人联系方式  " << tmp.cid << std::endl;
     std::cout << "11. 货物信息填写完成，保存退出" << std::endl;
     std::cout << "12. 直接退出" << std::endl;
     std::cout << "请输入选项: ";
@@ -70,7 +70,13 @@ void packageinput() { /*这是一个函数用来将货物输入货物类型中*/
       std::cout << "请输入货物所在区域，格式为A01,A02...B01,B02....最大为99"
                 << std::endl;
       std::cin >> tmp.area;
-      if (tmp.area[0] < 'A' || tmp.area[0] > 'Z') {
+      for (int i = 0; i < (int)list.size(); i++){
+          if (list[i].area == tmp.area) {
+              std::cout << "该区域已有货物，请重新输入" << std::endl;
+              continue;
+          }
+      }
+      if (tmp.area[0] < 'A' || tmp.area[0] > 'D') {
         std::cout << "输入格式错误，请重新输入" << std::endl;
         continue;
       } else if (tmp.area.length() > 3) {
@@ -90,19 +96,29 @@ void packageinput() { /*这是一个函数用来将货物输入货物类型中*/
         std::cout << "输入错误，请重新输入" << std::endl;
         continue;
       }
+      if((int)flights[index].packages.size() >= 396) {
+        std::cout << "该航班已满，无法添加货物" << std::endl;
+        continue;
+      }
       tmp.flight = flights[index].flight;
       tmp.flightPtr = &flights[index];
       break;
     case 8:
+        if (tmp.flightPtr == nullptr) {
+        std::cout << "请先选择航班，输入任意值以返回" << std::endl;
+        char a;
+        std::cin >> a;
+        continue;
+      }
       std::cout << "请输入货物舱位等级（E:经济舱，N:普通舱，V:优先舱）"
                 << std::endl;
       std::cin >> tmp.booking;
       if (tmp.booking == 'v' || tmp.booking == 'V') {
-        tmp.price = tmp.weight * 12.5;
+        tmp.price = tmp.weight * 12.5 * flights[index].distance;
       } else if (tmp.booking == 'n' || tmp.booking == 'N') {
-        tmp.price = tmp.weight * 8;
+        tmp.price = tmp.weight * 8 * flights[index].distance;
       } else if (tmp.booking == 'e' || tmp.booking == 'E') {
-        tmp.price = tmp.weight * 6;
+        tmp.price = tmp.weight * 6 * flights[index].distance;
       }
       break;
     case 9:

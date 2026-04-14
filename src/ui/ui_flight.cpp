@@ -5,6 +5,7 @@
 #include "flight/flightrewrite.h"
 #include "flight/flightsearch.h"
 #include "flight/flightwrite.h"
+#include "flight/flightcargohold.h"
 #include "ui/draw_flightmenu.h"
 
 #include <iostream>
@@ -35,9 +36,12 @@ void ui_flight() {
       flight_cargo_list(); // 查看航班内货物信息的函数
       break;
     case 6:
-      flight_delete(); // 删除货物的函数
+      flight_cargo_hold(); // 查看航班内货物占用情况的函数
       break;
     case 7:
+      flight_delete(); // 删除货物的函数
+      break;
+    case 8:
       return; // 退出程序
     default:
       break;

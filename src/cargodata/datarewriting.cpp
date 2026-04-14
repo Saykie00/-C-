@@ -55,8 +55,7 @@ void data_rewriting() {
   int option;
   char stop = 'y';
   while (stop == 'y' || stop == 'Y') {
-    std::cout << "[1]名称 [2]类型 [3]重量 [4]大小 [5]区域 [6]航班 [7]时间 "
-                 "[8]目的地 [9]货物等级 [10]运费 [11]货物托运人姓名 "
+    std::cout << "[1]名称 [2]类型 [3]重量 [4]大小 [5]区域 [6]航班 [9]货物等级 [10]运费 [11]货物托运人姓名 "
                  "[12]货物托运人联系方式 [13]不修改退出"
               << std::endl;
     if (!(std::cin >> option)) {
@@ -105,7 +104,7 @@ void data_rewriting() {
       std::cout << "请输入货物所在区域" << std::endl;
       std::cout << "当前区域：" << list[it].area << std::endl;
       std::cin >> list[it].area;
-      if (list[it].area[0] < 'A' || list[it].area[0] > 'Z') {
+      if (list[it].area[0] < 'A' || list[it].area[0] > 'D') {
         std::cout << "输入格式错误，请重新输入" << std::endl;
         continue;
       } else if (list[it].area.length() > 3) {
@@ -139,6 +138,13 @@ void data_rewriting() {
         std::cout << "输入无效，改写失败" << std::endl;
         std::cout << "请重新输入" << std::endl;
         continue;
+      }
+      if (list[it].booking == 'v' || list[it].booking == 'V') {
+        list[it].price = list[it].weight * 12.5 * list[it].flightPtr->distance;
+      } else if (list[it].booking == 'n' || list[it].booking == 'N') {
+        list[it].price = list[it].weight * 8 * list[it].flightPtr->distance;
+      } else if (list[it].booking == 'e' || list[it].booking == 'E') {
+        list[it].price = list[it].weight * 6 * list[it].flightPtr->distance;
       }
       break;
     case 10:

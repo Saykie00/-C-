@@ -1,5 +1,7 @@
-#include <cargodata/datalist.h>
 #include "cargodata/func.h"
+#include <cargodata/datalist.h>
+#include <iomanip>
+#include <ios>
 #include <iostream>
 
 void datalist() { /*显示货物列表*/
@@ -17,13 +19,15 @@ void datalist() { /*显示货物列表*/
        i++) { // 遍历列表中的货物，每次显示3个
     std::cout << "货物编号：" << list[i].number << std::endl;
     std::cout << "货物名字：" << list[i].Name << std::endl;
-    std::cout << "货物重量：" << list[i].weight << std::endl;
+    std::cout << std::fixed << "货物重量：" << std::setprecision(2)
+              << list[i].weight << std::endl;
     std::cout << "货物类型：" << list[i].type << std::endl;
 
     std::cout << "货物所在区域：" << list[i].area << std::endl;
     std::cout << "货物被分配到的航班号：" << list[i].flight << std::endl;
     std::cout << "货物舱位等级：" << list[i].booking << std::endl;
-    std::cout << "货物托运价格：" << list[i].price << std::endl;
+    std::cout << std::fixed << std::setprecision(2) << "货物托运价格："
+              << list[i].price << std::endl;
     std::cout << "货物托运人姓名：" << list[i].cname << std::endl;
     std::cout << "货物托运人联系方式：" << list[i].cid << std::endl;
     std::cout << "----------------------------------------" << std::endl;

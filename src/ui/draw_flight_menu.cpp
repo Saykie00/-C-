@@ -12,8 +12,9 @@ void draw_flight_menu() {
     std::cout << "[3] 从所有的航班中搜索" << std::endl;
     std::cout << "[4] 改写航班数据" << std::endl;
     std::cout << "[5] 查看航班内货物信息" << std::endl;
-    std::cout << "[6] 删除航班数据" << std::endl;
-    std::cout << "[7] 返回" << std::endl;
+    std::cout << "[6] 查看航班内货舱使用情况" << std::endl;
+    std::cout << "[7] 删除航班数据" << std::endl;
+    std::cout << "[8] 返回" << std::endl;
     std::cout << "_______________________________________" << std::endl;
     std::cout << "输入其他除此之外的其他键无效" << std::endl;
     std::cout << "请输入你的选择：" ;
