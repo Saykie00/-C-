@@ -48,7 +48,8 @@ void flight_cargo_hold() {
             break;
           }
         }
-        std::cout << "A01~A99 共有 " << foundA << " 个货物\n"<< "还有" << 99 - foundA << "个空位\n"
+        std::cout << "A01~A99 共有 " << foundA << " 个货物\n"
+                  << "还有" << 99 - foundA << "个空位\n"
                   << "使用率为：" << foundA / 99.0 * 100 << "%" << std::endl;
         break;
       }
@@ -135,6 +136,9 @@ void flight_cargo_hold() {
       }
       case 5: {
         return;
+      }
+      default: {
+        break;
       }
       }
     }

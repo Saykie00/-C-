@@ -124,8 +124,8 @@ void datasearch_byflight() {
 void datasearch() { /*这是一个函数用来搜索货物的 */
   while (true) {
     std::cout << "要按照何种方式搜索？" << std::endl;
-    std::cout << "1.按编号搜索" << std::endl;
-    std::cout << "2.按名字搜索" << std::endl;
+    std::cout << "1.按订单号搜索" << std::endl;
+    std::cout << "2.按货物名称搜索" << std::endl;
     std::cout << "3.按航班号搜索" << std::endl;
     std::cout << "4.返回主菜单" << std::endl;
     std::cout << "输入序号以开始" << std::endl;

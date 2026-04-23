@@ -38,6 +38,8 @@ void ui_cargo() {
       break;
     case 6:
       return; // 退出程序
+    default:
+      break;
     }
   }
 }

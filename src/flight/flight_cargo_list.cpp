@@ -17,7 +17,11 @@ void flight_cargo_list() {
         }
         std::cout << "输入航班编号查看航班货物：" << std::endl;
         int it;
-        std::cin >> it;
+        if (!(std::cin >> it)) {
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            continue;
+        }
         if (it < 0 || it >= (int)flights.size()) {
             std::cout << "无效的航班编号，输入任意值重新输入" ;
             int choice;
